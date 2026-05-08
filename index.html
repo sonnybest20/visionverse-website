@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>VisionVerse Official</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#070b16;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* PARTICLES */
+#particles-js{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(10px);
+    z-index:999;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:55px;
+}
+
+.logo h2{
+    font-size:28px;
+    font-weight:700;
+    background:linear-gradient(to right,#ff3131,#ff7b00,#ffe600);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#ffb300;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:130px 20px 80px;
+}
+
+.hero h1{
+    font-size:75px;
+    font-weight:800;
+    margin-bottom:20px;
+    background:linear-gradient(to right,#ff3131,#ff9900,#ffe600);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:800px;
+    opacity:0.9;
+    line-height:1.8;
+    font-size:18px;
+}
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.primary{
+    background:linear-gradient(to right,#ff3131,#ff9900);
+}
+
+.secondary{
+    border:2px solid #ff9d00;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+}
+
+/* SECTION */
+section{
+    padding:100px 8%;
+}
+
+.title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:60px;
+    color:#ffb300;
+}
+
+/* CARDS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:25px;
+    padding:30px;
+    transition:0.3s;
+    backdrop-filter:blur(8px);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#ff9d00;
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+/* ANNIVERSARY */
+.anniversary{
+    background:url('2b5e9b3c-453a-485d-bbfe-962b06f1dd37.png');
+    background-size:cover;
+    background-position:center;
+    border-radius:30px;
+    padding:100px 30px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.anniversary::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+}
+
+.anniversary-content{
+    position:relative;
+    z-index:2;
+}
+
+.anniversary h1{
+    font-size:65px;
+    margin-bottom:20px;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.time-box{
+    width:140px;
+    background:rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:25px;
+    backdrop-filter:blur(8px);
+}
+
+.time-box h2{
+    font-size:45px;
+    color:#ffb300;
+}
+
+/* STAFF */
+.staff-card{
+    text-align:center;
+}
+
+.staff-card img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:4px solid #ff9d00;
+    margin-bottom:15px;
+}
+
+/* ROBLOX PROFILE */
+.profile-box{
+    text-align:center;
+}
+
+.profile-box img{
+    width:140px;
+    border-radius:20px;
+    margin-bottom:15px;
+}
+
+/* NEWS */
+.news-item{
+    margin-bottom:25px;
+    padding-bottom:20px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* FOOTER */
+footer{
+    padding:40px;
+    text-align:center;
+    opacity:0.7;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .anniversary h1{
+        font-size:45px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<!-- HEADER -->
+<header>
+
+<div class="logo">
+<img src="VISION_1.png">
+<h2>VisionVerse</h2>
+</div>
+
+<nav>
+<a href="#about">About</a>
+<a href="#events">Events</a>
+<a href="#staff">Staff</a>
+<a href="#roblox">Roblox</a>
+<a href="#news">News</a>
+<a href="#join">Join</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+<img src="VISION.png" width="220">
+
+<h1>VisionVerse Community</h1>
+
+<p>
+Welcome to the official VisionVerse website. 
+A growing Roblox community focused on entertainment,
+events, creativity, giveaways, competitions and unforgettable experiences.
+</p>
+
+<div class="hero-buttons">
+<a href="https://discord.gg/YOURINVITE" target="_blank" class="btn primary">
+Join Discord
+</a>
+
+<a href="#events" class="btn secondary">
+Explore Events
+</a>
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+<h1 class="title">About VisionVerse</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>🎮 Roblox Community</h3>
+<p>
+VisionVerse creates exciting Roblox experiences,
+community activities and memorable events.
+</p>
+</div>
+
+<div class="card">
+<h3>🎉 Huge Events</h3>
+<p>
+We host anniversary celebrations, giveaways,
+art contests, tournaments and much more.
+</p>
+</div>
+
+<div class="card">
+<h3>🌟 Friendly Community</h3>
+<p>
+Our goal is to build a positive, active and
+welcoming community for everyone.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ANNIVERSARY -->
+<section id="events">
+
+<div class="anniversary">
+
+<div class="anniversary-content">
+
+<h1>VisionVerse 5th Anniversary</h1>
+
+<p>
+Celebrate 5 years of Vision, Unity & Legacy with exciting activities,
+Huge Robux Giveaway, Art Contest and Fun Minigames!
+</p>
+
+<div class="countdown">
+
+<div class="time-box">
+<h2 id="days">00</h2>
+<p>Days</p>
+</div>
+
+<div class="time-box">
+<h2 id="hours">00</h2>
+<p>Hours</p>
+</div>
+
+<div class="time-box">
+<h2 id="minutes">00</h2>
+<p>Minutes</p>
+</div>
+
+<div class="time-box">
+<h2 id="seconds">00</h2>
+<p>Seconds</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DISCORD -->
+<section>
+
+<h1 class="title">Discord Community</h1>
+
+<div class="grid">
+
+<div class="card">
+<h3>👥 Members</h3>
+<h1 id="memberCount">12,450+</h1>
+<p>Community Members</p>
+</div>
+
+<div class="card">
+<h3>💬 Active Chats</h3>
+<p>
+Meet new friends, join voice chats and participate in community discussions.
+</p>
+</div>
+
+<div class="card">
+<h3>🎁 Exclusive Events</h3>
+<p>
+Discord members receive exclusive announcements,
+rewards and event access.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ROBLOX -->
+<section id="roblox">
+
+<h1 class="title">Roblox Profile</h1>
+
+<div class="grid">
+
+<div class="card profile-box">
+
+<img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3108C0C0B31C6E0A8A9B6A0B0A5D4A6E-Png/420/420/AvatarHeadshot/Png/noFilter">
+
+<h2>VisionVerse Official</h2>
+
+<p>Roblox Community Group</p>
+
+<br>
+
+<a href="https://www.roblox.com/communities/10748904/VisionVerse-Community#!/about" target="_blank" class="btn primary">
+Visit Roblox Group
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STAFF -->
+<section id="staff">
+
+<h1 class="title">Our Staff</h1>
+
+<div class="grid">
+
+<div class="card staff-card">
+<img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3108C0C0B31C6E0A8A9B6A0B0A5D4A6E-Png/420/420/AvatarHeadshot/Png/noFilter">
+<h3>Clifford</h3>
+<p>Owner</p>
+</div>
+
+<div class="card staff-card">
+<img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3108C0C0B31C6E0A8A9B6A0B0A5D4A6E-Png/420/420/AvatarHeadshot/Png/noFilter">
+<h3>Moderator</h3>
+<p>Community Staff</p>
+</div>
+
+<div class="card staff-card">
+<img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3108C0C0B31C6E0A8A9B6A0B0A5D4A6E-Png/420/420/AvatarHeadshot/Png/noFilter">
+<h3>Developer</h3>
+<p>Game Developer</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- NEWS -->
+<section id="news">
+
+<h1 class="title">Latest News</h1>
+
+<div class="card">
+
+<div class="news-item">
+<h3>🎉 VisionVerse 5th Anniversary</h3>
+<p>
+The biggest VisionVerse event is arriving on 14 May 2026!
+Get ready for giveaways and fun activities.
+</p>
+</div>
+
+<div class="news-item">
+<h3>🎨 Art Contest Open</h3>
+<p>
+Submit your best artwork for a chance to win Robux rewards.
+</p>
+</div>
+
+<div class="news-item">
+<h3>🎁 Huge Giveaway</h3>
+<p>
+Special anniversary giveaway coming soon for all members.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- JOIN -->
+<section id="join">
+
+<div class="anniversary">
+
+<div class="anniversary-content">
+
+<h1>Join VisionVerse Today</h1>
+
+<p>
+Become part of our amazing Roblox community today.
+</p>
+
+<br><br>
+
+<a href="https://discord.gg/hcPRCMdpjH" target="_blank" class="btn primary">
+Join Discord Server
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 VisionVerse Community — All Rights Reserved.
+</footer>
+
+<script>
+
+/* COUNTDOWN */
+
+const targetDate = new Date("May 14, 2026 00:00:00").getTime();
+
+setInterval(() => {
+
+const now = new Date().getTime();
+const distance = targetDate - now;
+
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+/* PARTICLES */
+
+tsParticles.load("particles-js", {
+particles: {
+number: {
+value: 80
+},
+color: {
+value: ["#ff3131","#ff9d00","#ffe600"]
+},
+shape: {
+type: "circle"
+},
+opacity: {
+value: 0.5
+},
+size: {
+value: 3
+},
+move: {
+enable: true,
+speed: 1
+},
+links: {
+enable: true,
+distance: 150,
+color: "#ff9d00",
+opacity: 0.2
+}
+},
+background: {
+color: "#070b16"
+}
+});
+
+</script>
+
+</body>
+</html>
