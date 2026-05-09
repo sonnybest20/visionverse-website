@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisionVerse Official</title>
+  <meta name="description" content="VisionVerse Official Community Website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#050816;
+      --bg2:#0b1020;
+      --card:rgba(12,16,35,.78);
+      --card2:rgba(255,255,255,.04);
+      --text:#eef2ff;
+      --muted:rgba(238,242,255,.72);
+      --line:rgba(255,255,255,.08);
+      --brand:#ff7a18;
+      --brand2:#ff3d54;
+      --brand3:#ffd000;
+      --shadow:0 20px 50px rgba(0,0,0,.35);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Poppins',sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,61,84,.16), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(255,122,24,.14), transparent 26%),
+        linear-gradient(180deg, #03050d 0%, #050816 55%, #070b18 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    button,input{font:inherit}
+
+    #particles{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:-2;
+      pointer-events:none;
+    }
+
+    .overlay-glow{
+      position:fixed;
+      inset:-20%;
+      z-index:-3;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,61,84,.12), transparent 18%),
+        radial-gradient(circle at 80% 15%, rgba(255,208,0,.12), transparent 18%),
+        radial-gradient(circle at 50% 80%, rgba(88,130,255,.10), transparent 20%);
+      filter: blur(10px);
+      pointer-events:none;
+    }
+
+    .container{width:min(1180px, calc(100% - 32px)); margin:0 auto}
+    .section{padding:92px 0}
+    .section-title{
+      font-size: clamp(28px, 4vw, 46px);
+      line-height:1.05;
+      margin-bottom:14px;
+      letter-spacing:-0.03em;
+    }
+    .section-subtitle{
+      color:var(--muted);
+      max-width:720px;
+      margin-bottom:28px;
+    }
+
+    .glass{
+      background:linear-gradient(180deg, rgba(16,20,40,.88), rgba(11,14,30,.86));
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(16px);
+      border-radius:var(--radius);
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(5,8,22,.55);
+      backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:46px;
+      height:46px;
+      object-fit:contain;
+      border-radius:14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      padding:4px;
+      flex:0 0 auto;
+    }
+
+    .brand h1{
+      font-size:20px;
+      line-height:1.05;
+      letter-spacing:-0.03em;
+    }
+
+    .brand span{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:500;
+      transition:.2s ease;
+      padding:8px 10px;
+      border-radius:12px;
+    }
+
+    .nav-links a:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+    }
+
+    .hero{
+      padding:42px 0 24px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .95fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .hero-main{
+      position:relative;
+      overflow:hidden;
+      padding:34px;
+      min-height: 520px;
+    }
+
+    .hero-main::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,61,84,.22), transparent 20%),
+        radial-gradient(circle at 80% 35%, rgba(255,208,0,.16), transparent 20%),
+        linear-gradient(135deg, rgba(255,255,255,.03), transparent 40%);
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      max-width:720px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:fit-content;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .eyebrow .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--brand2), var(--brand3));
+      box-shadow:0 0 18px rgba(255,122,24,.45);
+    }
+
+    .hero h2{
+      font-size: clamp(42px, 7vw, 74px);
+      line-height:.92;
+      letter-spacing:-0.05em;
+      max-width:10ch;
+    }
+
+    .hero p{
+      color:var(--muted);
+      max-width:58ch;
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:8px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:600;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+
+    .btn:hover{transform:translateY(-2px); background:rgba(255,255,255,.09)}
+    .btn-primary{
+      border:none;
+      background:linear-gradient(135deg, var(--brand2), var(--brand), var(--brand3));
+      color:#160d04;
+      box-shadow:0 12px 30px rgba(255,122,24,.24);
+    }
+
+    .hero-graphic{
+      display:grid;
+      gap:22px;
+    }
+
+    .mini-card{
+      padding:22px;
+    }
+
+    .mini-card h3{
+      font-size:18px;
+      margin-bottom:8px;
+    }
+
+    .mini-card p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .brand-banner{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      min-height:245px;
+      padding:16px;
+      position:relative;
+    }
+
+    .brand-banner img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:20px;
+      filter:saturate(1.05) contrast(1.02);
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      padding:22px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      font-size:18px;
+      margin-bottom:10px;
+    }
+
+    .card p, .card li{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .list{
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+
+    .list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:12px;
+      width:fit-content;
+      margin-bottom:14px;
+    }
+
+    .badge i{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--brand2), var(--brand3));
+      display:inline-block;
+    }
+
+    .countdown-wrap{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .countdown-banner{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      opacity:.28;
+    }
+
+    .countdown-banner img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter: blur(.2px) saturate(1.05);
+    }
+
+    .countdown-content{
+      position:relative;
+      z-index:1;
+    }
+
+    .timer{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .time-box{
+      text-align:center;
+      padding:18px 12px;
+      border-radius:18px;
+      background:rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .time-box strong{
+      display:block;
+      font-size: clamp(24px, 4vw, 38px);
+      line-height:1;
+      margin-bottom:6px;
+      background:linear-gradient(135deg, #fff, #ffe7ba);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .time-box span{
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .profile-viewer{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .input-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .input-row input{
+      flex:1 1 220px;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      outline:none;
+    }
+
+    .input-row input::placeholder{color:rgba(238,242,255,.45)}
+
+    .profile-card{
+      min-height:340px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:26px;
+    }
+
+    .avatar{
+      width:120px;
+      height:120px;
+      border-radius:28px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+    }
+
+    .profile-meta{
+      display:grid;
+      gap:6px;
+    }
+
+    .profile-meta h4{
+      font-size:22px;
+      line-height:1.1;
+    }
+
+    .profile-meta p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      width:100%;
+      margin-top:6px;
+    }
+
+    .stat{
+      padding:14px 12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:20px;
+      margin-bottom:4px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .news-list{
+      display:grid;
+      gap:16px;
+    }
+
+    .news-item{
+      padding:18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+
+    .news-item .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:8px;
+      flex-wrap:wrap;
+    }
+
+    .news-item .date{
+      color:rgba(238,242,255,.55);
+      font-size:12px;
+    }
+
+    .staff-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .staff-card{
+      text-align:center;
+      padding:24px;
+    }
+
+    .staff-card img{
+      width:94px;
+      height:94px;
+      border-radius:24px;
+      object-fit:cover;
+      margin:0 auto 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+    }
+
+    .staff-card .role{
+      display:inline-flex;
+      margin-top:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:12px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .join-grid{
+      display:grid;
+      grid-template-columns: 1fr .95fr;
+      gap:18px;
+      align-items:stretch;
+    }
+
+    .discord-widget{
+      min-height:420px;
+      overflow:hidden;
+    }
+
+    .discord-widget iframe{
+      width:100%;
+      height:100%;
+      min-height:420px;
+      border:0;
+      border-radius:22px;
+      background:#111827;
+    }
+
+    .footer{
+      padding:30px 0 40px;
+      color:rgba(238,242,255,.6);
+      text-align:center;
+      font-size:13px;
+    }
+
+    .mobile-toggle{
+      display:none;
+      border:none;
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.08);
+      padding:10px 14px;
+      border-radius:14px;
+      cursor:pointer;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .profile-viewer,
+      .join-grid{
+        grid-template-columns:1fr;
+      }
+      .grid-3,
+      .grid-2,
+      .staff-grid{
+        grid-template-columns:1fr;
+      }
+      .timer{
+        grid-template-columns:repeat(2, 1fr);
+      }
+      .hero-main{min-height:auto}
+      .nav-links{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        align-items:stretch;
+        padding:14px 0 0;
+      }
+      .nav-links.open{display:flex}
+      .nav-links a{
+        padding:12px 14px;
+        background:rgba(255,255,255,.04);
+      }
+      .nav{
+        flex-wrap:wrap;
+      }
+      .mobile-toggle{
+        display:inline-flex;
+      }
+    }
+
+    @media (max-width: 560px){
+      .section{padding:70px 0}
+      .hero-main{padding:24px}
+      .timer{
+        grid-template-columns:1fr 1fr;
+      }
+      .stats{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="overlay-glow"></div>
+
+<header class="topbar">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="#home">
+        <!-- Replace this with your logo image file -->
+        <img src="https://media.discordapp.net/attachments/1092443909667438692/1502329728110166128/VISION_1-removebg-preview.png?ex=69fff9d7&is=69fea857&hm=61789aebf324f99c9c4aae8528904a60ce3e9dd27e01e766d1990f0791c70748&=&format=webp&quality=lossless" alt="VisionVerse logo">
+        <div>
+          <h1>VisionVerse</h1>
+          <span>Official Community Website</span>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="menuBtn">Menu</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#rules">Rules</a>
+        <a href="#events">Events</a>
+        <a href="#news">News</a>
+        <a href="#profile">Roblox Profile</a>
+        <a href="#staff">Staff</a>
+        <a href="#join">Join</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="home" class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <section class="hero-main glass">
+        <div class="hero-content">
+          <div class="eyebrow"><span class="dot"></span> VisionVerse Official</div>
+          <h2>Build. Play. Celebrate.</h2>
+          <p>
+            Welcome to VisionVerse, the official community space for events, updates,
+            staff info, Roblox profile checking, and the 5th Anniversary celebration.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#join">Join the Community</a>
+            <a class="btn" href="#events">See Anniversary Event</a>
+          </div>
+
+          <div class="grid-3" style="margin-top:18px">
+            <div class="card">
+              <h3>📜 Our Journey</h3>
+              <p>The community started under Sonny Intel Studio before evolving into VisionVerse, growing step by step through experience and passion.</p>
+            </div>
+            <div class="card">
+              <h3>🛠️ Game Development</h3>
+              <p>We focus on building Roblox games and experiences, including upcoming projects like Emperor Seas Project.</p>
+            </div>
+            <div class="card">
+              <h3>🤝 Community Spirit</h3>
+              <p>VisionVerse is driven by teamwork, creativity, and active community involvement.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="hero-graphic">
+        <div class="brand-banner glass">
+          <!-- Replace this with your VisionVerse anniversary banner file -->
+          <img src="2b5e9b3c-453a-485d-bbfe-962b06f1dd37.png" alt="VisionVerse 5th Anniversary Banner">
+        </div>
+
+        <div class="mini-card glass">
+          <div class="badge"><i></i> Countdown to 5th Anniversary</div>
+          <h3>VisionVerse 5th Anniversary</h3>
+          <p>🎉 🎉 **VisionVerse 5th Anniversary** 🎉
+
+Celebrate 5 amazing years of VisionVerse with us! Join the community for special events, giveaways, and surprises as we look back on our journey and move into the future.
+
+✨ Don’t miss it — be part of the celebration!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="badge"><i></i> About</div>
+    <h2 class="section-title">About VisionVerse</h2>
+    <p class="section-subtitle">
+      VisionVerse is a Roblox community made for events, updates, fun activities, and a cleaner official presence online.
+    </p>
+
+    <div class="grid-3">
+      <article class="card">
+        <h3>Community</h3>
+        <p>Friendly and active space for members to stay updated on VisionVerse news and activities.</p>
+      </article>
+      <article class="card">
+        <h3>Events</h3>
+        <p>Countdowns, anniversary celebrations, giveaways, and special community events in one place.</p>
+      </article>
+      <article class="card">
+        <h3>VisionVerse Motto</h3>
+        <p>VisionVerse aims to create a creative Roblox universe where ideas become reality, building fun games, a strong community, and inspiring experiences for everyone.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="rules" class="section">
+  <div class="container">
+    <div class="badge"><i></i> Rules</div>
+    <h2 class="section-title">Community Rules</h2>
+    <p class="section-subtitle">Simple rules help keep the community safe, friendly, and fun for everyone.</p>
+
+    <div class="card">
+      <ul class="list">
+        <li>• Be respectful to all members and staff.</li>
+        <li>• No spam, harassment, or toxic behavior.</li>
+        <li>• Follow Roblox and Discord rules at all times.</li>
+        <li>• Do not advertise without permission.</li>
+        <li>• Help keep VisionVerse positive and welcoming.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="events" class="section">
+  <div class="container">
+    <div class="badge"><i></i> Events</div>
+    <h2 class="section-title">Events & Countdown</h2>
+    <p class="section-subtitle">Celebrate 5 amazing years of VisionVerse with us! Join the community for special events, giveaways, and surprises as we look back on our journey and move into the future.</p>
+
+    <div class="grid-2">
+      <div class="card countdown-wrap">
+        <<div class="countdown-banner">
+  <img src="https://media.discordapp.net/attachments/1498995664942665879/1502513433810042961/content.png?ex=69fffc2d&is=69feaaad&hm=6da60af295ff851df62e8b1778c25b674a16be5069f5074d4f75923b2e4afe35&=&format=webp&quality=lossless&width=750&height=422" alt="VisionVerse 5th Anniversary Banner">
+</div>
+        <div class="countdown-content">
+          <div class="badge"><i></i> VisionVerse 5th Anniversary </div>
+          <h3>Time left until the celebration</h3>
+          <p id="countdownText">Loading countdown...</p>
+
+          <div class="timer" aria-label="countdown timer">
+            <div class="time-box"><strong id="days">00</strong><span>Days</span></div>
+            <div class="time-box"><strong id="hours">00</strong><span>Hours</span></div>
+            <div class="time-box"><strong id="minutes">00</strong><span>Minutes</span></div>
+            <div class="time-box"><strong id="seconds">00</strong><span>Seconds</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Upcoming Activities</h3>
+        <ul class="list" style="margin-top:14px">
+          <li>• Huge giveaway and lucky draw</li>
+          <li>• Art contest and creative submissions</li>
+          <li>• Fun minigames for members</li>
+          <li>• Special anniversary updates and announcements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="news" class="section">
+  <div class="container">
+    <div class="badge"><i></i> News</div>
+    <h2 class="section-title">Latest News</h2>
+    <p class="section-subtitle">Stay updated with everything happening in VisionVerse! From new updates, upcoming events, community announcements, and special surprises — this is where you’ll find all the latest information first.</p>
+
+    <div class="news-list" id="newsList"></div>
+  </div>
+</section>
+
+
+<section class="section" id="discord">
+  <div class="container">
+    <div class="badge"><i></i> Discord Member Counter</div>
+    <h2 class="section-title">Discord Widget</h2>
+    <p class="section-subtitle">
+      Connect with the VisionVerse community on Discord! Get the latest updates, event announcements, sneak peeks, and exclusive content straight from the team.
+    </p>
+
+    <div class="card discord-widget">
+      <iframe
+        title="Discord Server Widget"
+        src="https://discord.com/widget?id=1373616767636734044&theme=dark"
+        allowtransparency="true"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section id="staff" class="section">
+  <div class="container">
+    <div class="badge"><i></i> Staff</div>
+    <h2 class="section-title">Our Staff Team</h2>
+    <p class="section-subtitle">Change the names, roles, and images anytime.</p>
+
+    <div class="staff-grid">
+      <article class="card staff-card">
+        <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C775C7C357F13B2655E41B4BD30C63A1-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Owner">
+        <h3>Clifford</h3>
+        <p>Owner</p>
+        <span class="role">Community Leader</span>
+      </article>
+      <article class="card staff-card">
+        <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-4C25EADC119594DFF843C65F3F08633B-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Moderator">
+        <h3>Zach</h3>
+        <p>Executive Director</p>
+        <span class="role">Community Support</span>
+      </article>
+      <article class="card staff-card">
+        <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-63E9BEBE8E415ED19BDA4F70CC7EAF8C-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Developer">
+        <h3>Blossom</h3>
+        <p>Side Director</p>
+        <span class="role">Website & Game</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="section">
+  <div class="container">
+    <div class="badge"><i></i> Join</div>
+    <h2 class="section-title">Join VisionVerse</h2>
+    <p class="section-subtitle">Add your Discord invite link here and replace the button URL.</p>
+
+    <div class="join-grid">
+      <div class="card">
+        <h3>Join our Discord</h3>
+        <p style="margin-bottom:16px">
+          Stay updated with announcements, events, and staff news.
+        </p>
+
+        <div class="input-row">
+          <a class="btn btn-primary" href="https://discord.gg/hcPRCMdpjH" target="_blank" rel="noopener noreferrer">
+            Join Discord
+          </a>
+          <a class="btn" href="#home">Back to Top</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>💬Join VisionVerse Discord!</h3>
+        <ul class="list" style="margin-top:14px">
+          <li>• 📰 Get latest updates & announcements</li>
+          <li>• 🎉 Join events, giveaways & lucky draws</li>
+          <li>• 💬 Chat and connect with the community</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 VisionVerse. All rights reserved.
+</footer>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  menuBtn?.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // Particle background
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let w, h, particles;
+
+  function resizeCanvas() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.size = Math.random() * 2.2 + 0.6;
+      this.speedX = (Math.random() - 0.5) * 0.45;
+      this.speedY = (Math.random() - 0.5) * 0.45;
+      this.alpha = Math.random() * 0.6 + 0.2;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if (this.x < -20) this.x = w + 20;
+      if (this.x > w + 20) this.x = -20;
+      if (this.y < -20) this.y = h + 20;
+      if (this.y > h + 20) this.y = -20;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = Array.from({ length: Math.min(90, Math.floor(window.innerWidth / 14)) }, () => new Particle());
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (const p of particles) {
+      p.update();
+      p.draw();
+    }
+
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const a = particles[i];
+        const b = particles[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(255,255,255,${(1 - dist / 130) * 0.10})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animateParticles);
+  }
+
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    initParticles();
+  });
+
+  resizeCanvas();
+  initParticles();
+  animateParticles();
+
+  // Countdown to VisionVerse 5th Anniversary
+  const targetDate = new Date('2026-05-14T00:00:00').getTime();
+
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = Math.max(0, targetDate - now);
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+    const countdownText = document.getElementById('countdownText');
+    if (diff === 0) {
+      countdownText.textContent = 'The VisionVerse 5th Anniversary is now live!';
+    } else {
+      countdownText.textContent = 'Counting down to the VisionVerse 5th Anniversary celebration.';
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // News system
+  const newsItems = [
+    {
+      title: 'VisionVerse 5th Anniversary Announced',
+      date: '14 May 2026',
+      text: 'The anniversary event banner is now placed on the website countdown section.'
+    },
+    {
+      title: 'Website Upgrade In Progress',
+      date: 'Today',
+      text: 'New features like the Roblox profile viewer, news cards, and Discord widget are included.'
+    },
+    {
+      title: '🎮 Emperor Seas Project (2027)',
+      date: 'Soon',
+      text: 'An upcoming Roblox pirate adventure set in a vast ocean world. Explore islands, battle enemies, and rise through a powerful card-based system to become the Emperor of the Seas.🌊 Coming 2027 — stay tuned!'
+
+    }
+  ];
+
+  const newsList = document.getElementById('newsList');
+  newsList.innerHTML = newsItems.map(item => `
+    <article class="news-item">
+      <div class="top">
+        <h3>${item.title}</h3>
+        <span class="date">${item.date}</span>
+      </div>
+      <p>${item.text}</p>
+    </article>
+  `).join('');
+
+  // Roblox profile viewer
+  const usernameInput = document.getElementById('usernameInput');
+  const searchBtn = document.getElementById('searchBtn');
+
+  const profileAvatar = document.getElementById('profileAvatar');
+  const profileName = document.getElementById('profileName');
+  const profileHandle = document.getElementById('profileHandle');
+  const profileInfo = document.getElementById('profileInfo');
+  const profileId = document.getElementById('profileId');
+  const profileStatus = document.getElementById('profileStatus');
+  const profileLink = document.getElementById('profileLink');
+
+  async function searchRobloxProfile() {
+    const username = usernameInput.value.trim();
+    if (!username) return;
+
+    profileName.textContent = 'Searching...';
+    profileHandle.textContent = '@' + username;
+    profileInfo.textContent = 'Looking up profile...';
+    profileId.textContent = '...';
+    profileStatus.textContent = '...';
+    profileLink.textContent = '...';
+
+    try {
+      const lookupRes = await fetch('https://users.roblox.com/v1/usernames/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          usernames: [username],
+          excludeBannedUsers: false
+        })
+      });
+
+      if (!lookupRes.ok) throw new Error('Username lookup failed');
+
+      const lookupData = await lookupRes.json();
+      const user = lookupData?.data?.[0];
+
+      if (!user || !user.id) {
+        throw new Error('User not found');
+      }
+
+      const userRes = await fetch(`https://users.roblox.com/v1/users/${user.id}`);
+      const userData = await userRes.json();
+
+      const thumbRes = await fetch(
+        `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${user.id}&size=150x150&format=Png&isCircular=true`
+      );
+      const thumbData = await thumbRes.json();
+
+      const thumbUrl = thumbData?.data?.[0]?.imageUrl || 'VISION.png';
+
+      profileAvatar.src = thumbUrl;
+      profileName.textContent = userData.displayName || user.name || username;
+      profileHandle.textContent = '@' + (userData.name || user.name || username);
+      profileInfo.textContent = `Created: ${userData.created ? new Date(userData.created).toLocaleDateString() : 'Unknown'}`;
+      profileId.textContent = user.id;
+      profileStatus.textContent = user.isBanned ? 'Banned' : 'Active';
+      profileLink.innerHTML = `<a href="https://www.roblox.com/users/${user.id}/profile" target="_blank" rel="noopener noreferrer">Open</a>`;
+    } catch (err) {
+      profileAvatar.src = 'VISION.png';
+      profileName.textContent = 'Profile not found';
+      profileHandle.textContent = '@' + username;
+      profileInfo.textContent = 'Try another Roblox username or check your internet connection.';
+      profileId.textContent = '—';
+      profileStatus.textContent = 'Error';
+      profileLink.textContent = '—';
+      console.error(err);
+    }
+  }
+
+  searchBtn.addEventListener('click', searchRobloxProfile);
+  usernameInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') searchRobloxProfile();
+  });
+</script>
+
+</body>
+</html>
